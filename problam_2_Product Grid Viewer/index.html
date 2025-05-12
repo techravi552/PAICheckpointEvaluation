@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="index.css">
     <style>
         * {
             padding: 0;
@@ -91,6 +90,21 @@
          #product_card>div>div{
             text-align: center;
          }
+
+           #nest{
+            text-align:center; margin-top: 20px;
+         }
+         @media (max-width: 768px) {
+  #product_card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  #product_card {
+    grid-template-columns: 1fr;
+  }
+}
     </style>
 </head>
 
@@ -128,10 +142,14 @@
         </div> -->
       
     </div>
+
+      <div id="nest" >
+        <button id="prevBtn" onclick="prevPage()">Prev</button>
+        <button id="nextBtn" onclick="nextPage()">Next</button>
+      </div>
 </body>
 
 </html>
-<!-- <script src="index.js"></script> -->
 
 <script>
 
