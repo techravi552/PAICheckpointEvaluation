@@ -1,183 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-
-        header {
-            width: 100%;
-            background-color: black;
-            color: white;
-            text-align: center;
-            height: auto;
-        }
-
-        nav {
-            height: 70px;
-            width: 100%;
-            background-color: aqua;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        ul {
-            width: 90%;
-            height: 90%;
-            /* border: 1px solid red; */
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-
-        }
-
-        li {
-            list-style: none;
-        }
-
-        a:hover {
-            color: red;
-        }
-
-        input {
-            height: 30px;
-            width: 200px;
-            font-size: 28px;
-
-
-        }
-
-        #Enterbutton {
-            width: 100px;
-            height: 40px;
-            background-color: rgb(86, 86, 101);
-            font-size: 25px;
-            color: white;
-            border-radius: 20%;
-            /* border: none; */
-        }
-
-        #product_card {
-            width: 90%;
-            /* border: 1px solid red; */
-            height: auto;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        #product_card>div {
-            width: 100%;
-            height: 400px;
-            /* border: 1px solid red; */
-            margin-top: 10px;
-        }
-
-        #product_card>div>img {
-            width: 100%;
-            height: 70%;
-            /* border: 1px solid red; */
-
-        }
-         #product_card>div>div{
-            text-align: center;
-         }
-
-           #nest{
-            text-align:center; margin-top: 20px;
-         }
-         @media (max-width: 768px) {
-  #product_card {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  #product_card {
-    grid-template-columns: 1fr;
-  }
-}
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Grid Viewer</title>
+  <link rel="stylesheet" href="index.css" />
 </head>
-
 <body>
-    <header>
-        <h1>This is Product Grid Viewer</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.html"><img
-                        src="data:image/png;base64,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"
-                        alt="" width="50px" height="50px"></a></li>
-            <li><a href="index.html">Home</a></li>
+  <div class="container">
+    <h1>Product Grid Viewer</h1>
 
-            
-            <li><input type="text" name="" id="search" placeholder="Search">
-          <button onclick="dataSearch()" id="Enterbutton">Enter</button>
-
-            </li>
-          
-        </ul>
-    </nav>
-
-    <br>
-    <br>
-    <div id="product_card">
-        <!-- <div id="card">
-            <img src="data:image/png;base64,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"
-                alt="">
-                <div>
-                    <h3>Title</h1>
-                    <h4>Price : 288 $</p>
-                     <p><b><i>Reting : 3.9  </i></b></p>
-                </div>
-        </div> -->
-      
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search by title..." />
+      <select id="sortSelect">
+        <option value="">Sort By</option>
+        <option value="price-asc">Price (Low → High)</option>
+        <option value="price-desc">Price (High → Low)</option>
+        <option value="rating">Rating</option>
+      </select>
     </div>
 
-      <div id="nest" >
-        <button id="prevBtn" onclick="prevPage()">Prev</button>
-        <button id="nextBtn" onclick="nextPage()">Next</button>
-      </div>
+    <div id="productGrid" class="grid"></div>
+
+    <div class="pagination">
+      <button id="prevBtn">Prev</button>
+      <span id="pageInfo"></span>
+      <button id="nextBtn">Next</button>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
 </body>
-
 </html>
-
-<script>
-
-  allcloth= document.getElementById("product_card")
-
-
-    fetch("https://fakestoreapi.com/products")
-  .then(res => res.json())
-  .then(data => {
-     data.map((e)=>{
-        let div = document.createElement("div");
-
-div.innerHTML = `
-  <img src="${e.image}" class="product-img" alt="Product Image"/>
-  <div>
-  <h3>Price: $${e.price}</h3>
-  <p>${e.title}</p>
-
-    <p><b><i>Reting : ${e.rating.rate} </i></b></p>
-    <button>Buy</button>
-    </div>
-    
-  
-`;
-
-allcloth.appendChild(div);
-     })
-  });
-
-
-</script>
